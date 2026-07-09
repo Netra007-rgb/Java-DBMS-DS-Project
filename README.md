@@ -255,3 +255,225 @@ public class User {
 
 
 }
+
+
+//Admin Class
+class Admin{
+    int adminId;
+    String adminName;
+    String userName;
+    String password;
+    String email;
+    String phoneNo;
+
+    public Admin(int adminId, String adminName, String userName, String password, String email, String phoneNo) {
+        this.adminId = adminId;
+        this.adminName = adminName;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.phoneNo = phoneNo;
+    }
+
+    public int getAdminId() {
+        return adminId;
+    }
+    public String getAdminName() {
+        return adminName;
+    }
+    public String getUserName() {
+        return userName;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
+    }
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
+    }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "adminId=" + adminId +
+                ", adminName='" + adminName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNo='" + phoneNo + '\'' +
+                '}';
+    }
+}
+
+
+
+
+//Donor Class
+class Donor{
+    int donorID;
+    String donorName;
+    int donorAge;
+    String donorGender;
+    String bloodGroup;
+    String cityName;
+    String phoneNo;
+    String email;
+    String donorHistory;
+    Boolean available;
+
+    public Donor(int donorID, String donorName, int donorAge, String donorGender, String bloodGroup, String cityName, String phoneNo, String email, String donorHistory, Boolean available) {
+        this.donorID = donorID;
+        this.donorName = donorName;
+        this.donorAge = donorAge;
+        this.donorGender = donorGender;
+        this.bloodGroup = bloodGroup;
+        this.cityName = cityName;
+        this.phoneNo = phoneNo;
+        this.email = email;
+        this.donorHistory = donorHistory;
+        this.available = available;
+    }
+
+    public int getDonorID() {
+        return donorID;
+    }
+    public String getDonorName() {
+        return donorName;
+    }
+    public int getDonorAge() {
+        return donorAge;
+    }
+    public String getDonorGender() {
+        return donorGender;
+    }
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+    public String getCityName() {
+        return cityName;
+    }
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getDonorHistory() {
+        return donorHistory;
+    }
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setDonorID(int donorID) {
+        this.donorID = donorID;
+    }
+    public void setDonorName(String donorName) {
+        this.donorName = donorName;
+    }
+    public void setDonorAge(int donorAge) {
+        this.donorAge = donorAge;
+    }
+    public void setDonorGender(String donorGender) {
+        this.donorGender = donorGender;
+    }
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setDonorHistory(String donorHistory) {
+        this.donorHistory = donorHistory;
+    }
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
+
+    @Override
+    public String toString() {
+        return "Donor{" +
+                "donorID=" + donorID +
+                ", donorName='" + donorName + '\'' +
+                ", donorAge=" + donorAge +
+                ", donorGender='" + donorGender + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                ", cityName='" + cityName + '\'' +
+                ", phoneNo='" + phoneNo + '\'' +
+                ", email='" + email + '\'' +
+                ", donorHistory='" + donorHistory + '\'' +
+                ", available='" + available + '\'' +
+                '}';
+    }
+}
+
+
+//Blood Inventory Class
+class BloodInventory{
+    int inventoryId;
+    String bloodGroup;
+    int unitsAvailable;
+    int minUnitsAvailability;
+
+    public int getInventoryId() {
+        return inventoryId;
+    }
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+    public int getUnitsAvailable() {
+        return unitsAvailable;
+    }
+    public int getMinUnitsAvailability() {
+        return minUnitsAvailability;
+    }
+
+    public void setInventoryId(int inventoryId) {
+        this.inventoryId = inventoryId;
+    }
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+    public void setUnitsAvailable(int unitsAvailable) {
+        this.unitsAvailable = unitsAvailable;
+    }
+    public void setMinUnitsAvailability(int minUnitsAvailability) {
+        this.minUnitsAvailability = minUnitsAvailability;
+    }
+
+    @Override
+    public String toString() {
+        return "BloodInventory{" +
+                "inventoryId=" + inventoryId +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                ", unitsAvailable=" + unitsAvailable +
+                ", minUnitsAvailability=" + minUnitsAvailability +
+                '}';
+        }
+    }
