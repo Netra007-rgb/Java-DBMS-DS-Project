@@ -54,16 +54,7 @@ public class UserManager {
         return null;
     }
 
-    public User searchByUsername(String username) {
-
-        for (User user : users) {
-
-            if (user.getUsername().equalsIgnoreCase(username))
-                return user;
-        }
-
-        return null;
-    }
+   
 
     public boolean deleteUser(int id) {
 
