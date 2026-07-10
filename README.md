@@ -477,3 +477,100 @@ class BloodInventory{
                 '}';
         }
     }
+
+
+    //Blood request
+    class BloodRequest{
+    int requestID;
+    String patientName;
+    int patientAge;
+    String bloodGroup;
+    int unitsRequired;
+    String hospitalName;
+    String cityName;
+    String contactNo;
+    String requestStatus;
+
+    public BloodRequest(int requestID, String patientName, int patientAge, String bloodGroup, int unitsRequired, String hospitalName, String cityName, String contactNo, String requestStatus) {
+        this.requestID = requestID;
+        this.patientName = patientName;
+        this.patientAge = patientAge;
+        this.bloodGroup = bloodGroup;
+        this.unitsRequired = unitsRequired;
+        this.hospitalName = hospitalName;
+        this.cityName = cityName;
+        this.contactNo = contactNo;
+        this.requestStatus = requestStatus;
+    }
+
+    public int getRequestID() {
+        return requestID;
+    }
+    public String getPatientName() {
+        return patientName;
+    }
+    public int getPatientAge() {
+        return patientAge;
+    }
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+    public int getUnitsRequired() {
+        return unitsRequired;
+    }
+    public String getHospitalName() {
+        return hospitalName;
+    }
+    public String getCityName() {
+        return cityName;
+    }
+    public String getContactNo() {
+        return contactNo;
+    }
+    public String getRequestStatus() {
+        return requestStatus;
+    }
+
+    public void setRequestID(int requestID) {
+        this.requestID = requestID;
+    }
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+    public void setPatientAge(int patientAge) {
+        this.patientAge = patientAge;
+    }
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+    public void setUnitsRequired(int unitsRequired) {
+        this.unitsRequired = unitsRequired;
+    }
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+    public void setContactNo(String contactNo) {
+        this.contactNo = contactNo;
+    }
+    public void setRequestStatus(String requestStatus) {
+        this.requestStatus = requestStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "BloodRequest{" +
+                "requestID=" + requestID +
+                ", patientName='" + patientName + '\'' +
+                ", patientAge=" + patientAge +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                ", unitsRequired=" + unitsRequired +
+                ", hospitalName='" + hospitalName + '\'' +
+                ", cityName='" + cityName + '\'' +
+                ", contactNo='" + contactNo + '\'' +
+                ", requestStatus='" + requestStatus + '\'' +
+                '}';
+    }
+}
