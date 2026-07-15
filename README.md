@@ -576,6 +576,8 @@ class BloodInventory{
 }
 
 // <<<<BLOOD REQUEST SERVICE CLASS>>>>
+
+
 //this class provides services for managing BloodRequest class
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -909,7 +911,10 @@ public class BloodRequestService {
     }
 }
 
+
 //<<<<<<DonationHistory class>>>>
+
+
 
 //this class only stores donation history details..
 public class DonationHistory {
