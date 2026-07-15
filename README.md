@@ -574,3 +574,450 @@ class BloodInventory{
                 '}';
     }
 }
+
+// <<<<BLOOD REQUEST SERVICE CLASS>>>>
+//this class provides services for managing BloodRequest class
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BloodRequestService {
+    private final ArrayList<BloodRequest> requests=new ArrayList<>();
+    private Scanner sc=new Scanner(System.in);
+    private int nextRequestId=1;
+    public BloodRequestService()
+    {}
+
+    public boolean addRequest(BloodRequest request)
+    {
+        if(request==null) {
+            return false;
+        }
+            request.setRequestID(nextRequestId);
+            nextRequestId++;
+            request.setRequestStatus("Pending");
+            requests.add(request);
+        return true;
+    }
+
+    public BloodRequest searchRequest(int requestID)
+    {
+      for(BloodRequest request:requests)
+      {
+          if(request.getRequestID()==requestID)
+          {
+              return request;
+          }
+      }
+      return null;
+    }
+
+    public boolean deleteRequest(int requestID)
+    {
+        BloodRequest request=searchRequest(requestID);
+        if(request!=null)
+        {
+           requests.remove(request);
+           System.out.println("Request deleted successfully.");
+           return true;
+        }
+        System.out.println("No matching requests found.");
+        return false;
+    }
+
+    public void updateRequest()
+    {
+        System.out.println("Enter the Request ID you want to update:");
+        int requestID = sc.nextInt();
+        sc.nextLine();
+
+        BloodRequest request = searchRequest(requestID);
+
+        if(request == null)
+        {
+            System.out.println("No matching request found.");
+            return;
+        }
+
+        int choice;
+
+        do
+        {
+            System.out.println("\n===== Update Request Menu =====");
+            System.out.println("1. Update Patient Name");
+            System.out.println("2. Update Patient Age");
+            System.out.println("3. Update Blood Group");
+            System.out.println("4. Update Units Required");
+            System.out.println("5. Update Hospital Name");
+            System.out.println("6. Update City");
+            System.out.println("7. Update Contact Number");
+            System.out.println("8. Update Priority");
+            System.out.println("9. Exit");
+            System.out.print("Enter your choice: ");
+
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch(choice)
+            {
+                case 1:
+                    System.out.print("Enter Updated Patient Name: ");
+                    String patientName = sc.nextLine();
+                    while(patientName.trim().isEmpty())
+                    {
+                        System.out.print("Name cannot be empty. Enter again: ");
+                        patientName = sc.nextLine();
+                    }
+
+                    request.setPatientName(patientName);
+                    System.out.println("Patient name updated successfully.");
+                    // JDBC Connectivity...
+                    break;
+
+                case 2:
+                    System.out.print("Enter Updated Patient Age: ");
+                    int patientAge = sc.nextInt();
+
+                    while(patientAge < 1 || patientAge > 110)
+                    {
+                        System.out.print("Invalid age! Please enter age between 1 and 110: ");
+                        patientAge = sc.nextInt();
+                    }
+                    request.setPatientAge(patientAge);
+                    sc.nextLine();
+                    System.out.println("Patient age updated successfully.");
+                    // JDBC Connectivity...
+                    break;
+
+                case 3:
+                    System.out.print("Enter Updated Blood Group: ");
+                    String bloodGroup = sc.nextLine();
+                    while(!(bloodGroup.equalsIgnoreCase("A+") ||
+                            bloodGroup.equalsIgnoreCase("A-") ||
+                            bloodGroup.equalsIgnoreCase("B+") ||
+                            bloodGroup.equalsIgnoreCase("B-") ||
+                            bloodGroup.equalsIgnoreCase("AB+") ||
+                            bloodGroup.equalsIgnoreCase("AB-") ||
+                            bloodGroup.equalsIgnoreCase("O+") ||
+                            bloodGroup.equalsIgnoreCase("O-")))
+                    {
+                        System.out.print("Invalid Blood Group! Enter again: ");
+                        bloodGroup = sc.nextLine();
+                    }
+
+                    request.setBloodGroup(bloodGroup.toUpperCase());
+                    System.out.println("Blood group updated successfully.");
+                    // JDBC Connectivity...
+                    break;
+
+                case 4:
+                    System.out.print("Enter Updated Units Required: ");
+                    int units = sc.nextInt();
+
+                    while(units < 1 || units > 10)
+                    {
+                        System.out.print("Units should be between 1 and 10: ");
+                        units = sc.nextInt();
+                    }
+
+                    request.setUnitsRequired(units);
+                    sc.nextLine();
+                    System.out.println("Units updated successfully.");
+                    // JDBC Connectivity...
+                    break;
+
+                case 5:
+                    System.out.print("Enter Updated Hospital Name: ");
+                    String hospital = sc.nextLine();
+                    while(hospital.trim().isEmpty())
+                    {
+                        System.out.print("Hospital name cannot be empty. Enter again: ");
+                        hospital = sc.nextLine();
+                    }
+
+                    request.setHospitalName(hospital);
+                    System.out.println("Hospital name updated successfully.");
+                    // JDBC Connectivity...
+                    break;
+
+                case 6:
+                    System.out.print("Enter Updated City: ");
+                    String city = sc.nextLine();
+                    while(city.trim().isEmpty())
+                    {
+                        System.out.print("City name cannot be empty. Enter again: ");
+                        city = sc.nextLine();
+                    }
+
+                    request.setCityName(city);
+                    System.out.println("City updated successfully.");
+                    // JDBC Connectivity...
+                    break;
+
+                case 7:
+                    System.out.print("Enter Updated Contact Number: ");
+                    String contact = sc.nextLine();
+
+                    while(contact.length()!=10 ||
+                            !Character.isDigit(contact.charAt(0)) ||
+                            !Character.isDigit(contact.charAt(1)) ||
+                            !Character.isDigit(contact.charAt(2)) ||
+                            !Character.isDigit(contact.charAt(3)) ||
+                            !Character.isDigit(contact.charAt(4)) ||
+                            !Character.isDigit(contact.charAt(5)) ||
+                            !Character.isDigit(contact.charAt(6)) ||
+                            !Character.isDigit(contact.charAt(7)) ||
+                            !Character.isDigit(contact.charAt(8)) ||
+                            !Character.isDigit(contact.charAt(9)))
+                    {
+                        System.out.print("Invalid Contact Number! Enter again: ");
+                        contact = sc.nextLine();
+                    }
+                    request.setContactNo(contact);
+                    System.out.println("Contact number updated successfully.");
+                    // JDBC Connectivity...
+                    break;
+
+                case 8:
+                    System.out.print("Enter Updated Priority (High/Medium/Low): ");
+                    String priority = sc.nextLine();
+                    while(!(priority.equalsIgnoreCase("High") ||
+                            priority.equalsIgnoreCase("Medium") ||
+                            priority.equalsIgnoreCase("Low")))
+                    {
+                        System.out.print("Invalid Priority! Enter High, Medium or Low: ");
+                        priority = sc.nextLine();
+                    }
+
+                    request.setPriority(priority);
+                    System.out.println("Priority updated successfully.");
+                    // JDBC Connectivity...
+                    break;
+
+                case 9:
+                    System.out.println("Exiting Update Menu...");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } while(choice != 9);
+    }
+
+    public void displayAllRequests()
+    {
+            if(requests.isEmpty())
+            {
+                System.out.println("No requests available.");
+                return;
+            }
+        for(BloodRequest request:requests)
+        {
+            System.out.println(request);
+        }
+    }
+
+    public void displayPendingRequests()
+    {
+        boolean found=false;
+        for(BloodRequest request:requests)
+        {
+            if("Pending".equals(request.getRequestStatus())) //no null pointer exception
+            {
+                System.out.println(request);
+                found=true;
+            }
+        }
+        if(!found)
+        {
+            System.out.println("No pending requests.");
+        }
+    }
+
+    public void displayCompletedRequests()
+    {
+        boolean found=false;
+        for(BloodRequest request:requests)
+        {
+            if("Completed".equals(request.getRequestStatus()))
+            {
+                System.out.println(request);
+                found=true;
+            }
+        }
+        if(!found)
+        {
+            System.out.println("No completed requests.");
+        }
+    }
+
+    public boolean cancelRequest(int requestID)
+    {
+        BloodRequest request = searchRequest(requestID);
+        if(request!=null)
+        {
+            request.setRequestStatus("Cancelled");
+            System.out.println("Request cancelled successfully.");
+            return true;
+        }
+        else{
+            System.out.println("No matching requests found.");
+            return false;
+        }
+    }
+
+    public boolean completeRequest(int requestID) {
+        BloodRequest request = searchRequest(requestID);
+        if (request != null) {
+            request.setRequestStatus("Completed");
+            System.out.println("Request completed successfully.");
+            return true;
+        } else {
+            System.out.println("No matching request found.");
+            return false;
+        }
+    }
+
+    public void displayCriticalRequests() {
+        boolean found = false;
+        for (BloodRequest request : requests) {
+            if ("High".equals(request.getPriority())) {
+                System.out.println(request);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No high priority requests.");
+        }
+    }
+
+    public boolean assignDonor(int requestID, int donorID, String donorName) {
+        BloodRequest request = searchRequest(requestID);
+        if (request == null) {
+            System.out.println("No matching requests found.");
+            return false;
+        } else if ("Cancelled".equals(request.getRequestStatus())||"Completed".equals(request.getRequestStatus())){
+            System.out.println("Cannot assign donor. Request is already cancelled or completed.");
+            return false;
+        } else {
+            request.setDonorID(donorID);
+            request.setDonorName(donorName);
+            request.setRequestStatus("Assigned");
+            System.out.println("Donor assigned successfully.");
+            return true;
+        }
+    }
+}
+
+//<<<<<<DonationHistory class>>>>
+
+//this class only stores donation history details..
+public class DonationHistory {
+    private int requestID;
+    private int historyID;
+    private int donorID;
+    private String donorName;
+    private String patientName;
+    private String bloodGroup;
+    private int unitsDonated;
+    private String hospitalName;
+    private String cityName;
+    private String donationDate;
+
+    public DonationHistory(){}
+
+    public DonationHistory(int requestID,int historyID, int donorID, String donorName,
+                           String patientName, String bloodGroup, int unitsDonated, String hospitalName,
+                           String cityName, String donationDate) {
+        this.requestID=requestID;
+        this.historyID = historyID;
+        this.donorID = donorID;
+        this.donorName = donorName;
+        this.patientName = patientName;
+        this.bloodGroup = bloodGroup;
+        this.unitsDonated = unitsDonated;
+        this.hospitalName = hospitalName;
+        this.cityName = cityName;
+        this.donationDate = donationDate;
+    }
+
+//getters
+    public int getRequestID() {
+        return requestID;
+    }
+    public int getHistoryID() {
+        return historyID;
+    }
+    public int getDonorID() {
+        return donorID;
+    }
+    public String getDonorName() {
+        return donorName;
+    }
+    public String getPatientName() {
+        return patientName;
+    }
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+    public int getUnitsDonated() {
+        return unitsDonated;
+    }
+    public String getHospitalName() {
+        return hospitalName;
+    }
+    public String getCityName() {
+        return cityName;
+    }
+    public String getDonationDate() {
+        return donationDate;
+    }
+
+ //setters
+    public void setRequestID(int requestID) {
+        this.requestID = requestID;
+    }
+    public void setHistoryID(int historyID) {
+        this.historyID = historyID;
+    }
+    public void setDonorID(int donorID) {
+        this.donorID = donorID;
+    }
+    public void setDonorName(String donorName) {
+        this.donorName = donorName;
+    }
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+    public void setUnitsDonated(int unitsDonated) {
+        this.unitsDonated = unitsDonated;
+    }
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+    public void setDonationDate(String donationDate) {
+        this.donationDate = donationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "DonationHistory{" +
+                "requestID=" + requestID +
+                ", historyID=" + historyID +
+                ", donorID=" + donorID +
+                ", donorName='" + donorName + '\'' +
+                ", patientName='" + patientName + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                ", unitsDonated=" + unitsDonated +
+                ", hospitalName='" + hospitalName + '\'' +
+                ", cityName='" + cityName + '\'' +
+                ", donationDate='" + donationDate + '\'' +
+                '}';
+    }
+}
